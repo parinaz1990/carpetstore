@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>حذف فرش</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">آیا مطمئن هستید که می‌خواهید این فرش را حذف کنید؟</h2>
+        <div class="border p-4 rounded bg-light shadow-sm">
+            <p><strong>نام فرش:</strong> {{ carpet.name }}</p>
+            <p><strong>توضیحات:</strong> {{ carpet.description }}</p>
+            <p><strong>اندازه:</strong> {{ carpet.size }}</p>
+            <p><strong>موجودی:</strong> {{ carpet.stock }}</p>
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">حذف فرش</button>
+                <a href="{% url 'carpet_list' %}" class="btn btn-secondary">بازگشت به لیست فرش‌ها</a>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
